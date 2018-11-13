@@ -1,0 +1,71 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% load static %}
+
+<html>
+  <head>
+    <title>Analiticas Descriptivas Moodle UV</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'analytics_moodle_uv/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'analytics_moodle_uv/css/font-awesome/css/font-awesome.css' %}">
+  </head>
+
+  <body>
+    <header id="page_header">
+        <div class="col-sm-1" id="btn-menu-toogle">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="col-sm-8">
+            <img src="{% static 'analytics_moodle_uv/images/log_large.png' %}" alt="Logo Univalle">
+        </div>
+    </header>
+
+    <div id="wrapper" class="toggled">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    Menú
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-area-chart"></i> Resumen</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-folder-open"></i> Cursos</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users"></i> Usuarios</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-pencil"></i> Actividades</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-book"></i> Recursos</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Resumen general</h1>
+                <p></p>
+                <p></p>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+
+   <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+  </body>
+
+</html>
