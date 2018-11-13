@@ -15,12 +15,15 @@
 
   <body>
     <header id="page_header">
-        <div class="col-sm-1" id="btn-menu-toogle">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
+        <div class="row">
+            <div class="col-sm-1">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="col-sm-8 d-sm-inline">
+                <img class="img-fluid" src="{% static 'analytics_moodle_uv/images/logo_large.png' %}" alt="Logo Univalle">
+            </div>
         </div>
-        <div class="col-sm-8">
-            <img src="{% static 'analytics_moodle_uv/images/log_large.png' %}" alt="Logo Univalle">
-        </div>
+
     </header>
 
     <div id="wrapper" class="toggled">
@@ -58,6 +61,10 @@
         </div>
         <!-- /#page-content-wrapper -->
     </div>
+
+    <footer class="navbar fixed-bottom" id="page-footer">
+        Contacto
+    </footer>
 
    <!-- Menu Toggle Script -->
     <script>

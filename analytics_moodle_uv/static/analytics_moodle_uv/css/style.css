@@ -107,6 +107,12 @@ body {
   background: none;
 }
 
+#page-footer{
+  height: 5%;
+  background-color: #CD1F32;
+}
+
+
 
 
 @media(min-width:768px) {
