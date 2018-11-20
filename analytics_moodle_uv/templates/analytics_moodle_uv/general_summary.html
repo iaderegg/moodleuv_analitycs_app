@@ -1,78 +1,104 @@
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-
+{% extends  "analytics_moodle_uv/base.html" %}
 {% load static %}
 
-<html>
-  <head>
-    <title>Analiticas Descriptivas Moodle UV</title>
-
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="{% static 'analytics_moodle_uv/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'analytics_moodle_uv/css/font-awesome/css/font-awesome.css' %}">
-  </head>
-
-  <body>
-    <header id="page_header">
-        <div class="row">
-            <div class="col-sm-1">
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
-            </div>
-            <div class="col-sm-8 d-sm-inline">
-                <img class="img-fluid" src="{% static 'analytics_moodle_uv/images/logo_large.png' %}" alt="Logo Univalle">
-            </div>
-        </div>
-
-    </header>
-
-    <div id="wrapper" class="toggled">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    Menú
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-area-chart"></i> Resumen</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-folder-open"></i> Cursos</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-users"></i> Usuarios</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-pencil"></i> Actividades</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-book"></i> Recursos</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <h1>Resumen general</h1>
-                <p></p>
-                <p></p>
-
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+{% block content %}
+    <div class="col-12">
+        <h3>Resumen general</h3>
+        <hr>
     </div>
+    <!-- Courses column -->
+    <div class="col-6">
+        <div class="col-12">
+            <h4>Cursos</h4>
+        </div>
+        <div class="col-12">
+            <div class="card-deck">
+                <div class="card" id="card-total-courses">
+                    <div class="card-body">
+                        <p class="card-text counter">9999</p>
+                        <h6 class="card-title">Total cursos</h6>
+                    </div>
+                </div>
+                <div class="card" id="card-courses-by-semester">
+                    <div class="card-body">
+                        <p class="card-text counter">9999</p>
+                        <h6 class="card-title">Cursos periodo actual</h6>
+                    </div>
+                </div>
+                <div class="card" id="card-active-courses">
+                    <div class="card-body">
+                        <p class="card-text counter">9999</p>
+                        <h5 class="card-title">Cursos activos en el periodo actual</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <footer class="navbar fixed-bottom" id="page-footer">
-        Contacto
-    </footer>
+        <div class="col-12">
+            <canvas id="courses-headquarters-bar-chart" width="800" height="450"></canvas>
+        </div>
 
-   <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-  </body>
+        <div class="col-12">
+            <canvas id="courses-faculty-bar-chart" width="800" height="450"></canvas>
+        </div>
 
-</html>
+        <div class="col-12">
+            <h5>Top recursos</h5>
+        </div>
+    </div>
+    <!-- End courses column -->
+
+    <!-- Users column -->
+    <div class="col-6">
+        <div class="col-12">
+            <h4>Usuarios</h4>
+        </div>
+
+        <div class="col-12">
+            <div class="card-deck">
+                <div class="card" id="card-total-users">
+                    <div class="card-body">
+                        <p class="card-text counter">9999</p>
+                        <h5 class="card-title">Total usuarios</h5>
+                    </div>
+                </div>
+
+                <div class="card" id="card-users-by-semester">
+                    <div class="card-body">
+                        <p class="card-text counter">9999</p>
+                        <h5 class="card-title">Usuarios periodo actual</h5>
+                    </div>
+                </div>
+
+                 <div class="card" id="card-active-users">
+                    <div class="card-body">
+                        <p class="card-text counter">9999</p>
+                        <h5 class="card-title">Usuarios periodo actual</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <canvas id="users-headquarters-bar-chart" width="800" height="450"></canvas>
+        </div>
+
+        <div class="col-12">
+            <canvas id="users-faculty-bar-chart" width="800" height="450"></canvas>
+        </div>
+
+        <div class="col-12">
+            <h5>Top actividades</h5>
+        </div>
+
+    </div>
+    <!-- End users column -->
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'analytics_moodle_uv/js/Chart.min.js' %}"></script>
+    <script src="{% static 'analytics_moodle_uv/js/TweenMax.min.js' %}"></script>
+    <script src="{% static 'analytics_moodle_uv/js/counter.js' %}"></script>
+
+{% endblock %}

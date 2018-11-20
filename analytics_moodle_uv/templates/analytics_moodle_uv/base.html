@@ -1,0 +1,90 @@
+{% load static %}
+
+<html>
+  <head>
+    <title>Analiticas Descriptivas Moodle UV</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'analytics_moodle_uv/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'analytics_moodle_uv/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'analytics_moodle_uv/css/font-awesome/css/font-awesome.css' %}">
+
+    <!-- Scripts -->
+    <script src="{% static 'analytics_moodle_uv/js/jquery.min.js' %}"></script>
+    <script src="{% static 'analytics_moodle_uv/js/bootstrap.min.js' %}"></script>
+
+  </head>
+
+  <body>
+    <div class="page_header" id="page_header">
+        <div class="row">
+            <div class="col-sm-1" id="div-menu-toogle">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="col-sm-11">
+                <img class="img-fluid" src="{% static 'analytics_moodle_uv/images/logo_large.png' %}" alt="Logo Univalle">
+            </div>
+        </div>
+
+    </div>
+
+    <div id="wrapper" class="toggled">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    Menú
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-area-chart"></i> Resumen</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-folder-open"></i> Cursos</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users"></i> Usuarios</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-pencil"></i> Actividades</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-book"></i> Recursos</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    {% block content%}
+                    {% endblock%}
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+
+    <footer class="navbar fixed-bottom" id="page-footer">
+        <div class="col-md-12">
+            <h4>Vicerrectoría Académica</h4>
+        </div>
+        <div class="col-md-12">
+            <h5>Dirección de Nuevas Tecnologías y Educación Virtual - DINTEV</h5>
+        </div>
+    </footer>
+
+   <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+    {% block scripts%}
+    {% endblock %}
+
+
+  </body>
+
+</html>

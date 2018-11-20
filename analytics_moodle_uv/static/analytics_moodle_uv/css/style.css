@@ -2,9 +2,19 @@ body {
   overflow-x: hidden;
 }
 
+.card {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
 #page_header{
-  height: 10%;
+  height: 7%;
   background-color: #CD1F32;
+}
+
+#page_header * {
+  height: 100%;
 }
 
 #wrapper {
@@ -38,15 +48,22 @@ body {
   width: 200px;
 }
 
-#menu-toggle{
-  margin: 5px 0px 5px 0px;
-  height: auto;
-  width: auto;
-  font-size: xx-large;
+#div-menu-toogle {
+  height: 100%;
+  padding-left: 15px;
+}
+
+#menu-toggle {
+  margin: 5px 0px 5px 10px;
+  height: 80%;
+  width: 60px;
+  font-size: large;
   position: relative;
+  border: 0px;
   border-radius: 0;
   background-color: rgb(238, 238, 238);
   color: #CD1F32;
+  padding-top: 15px;
 }
 
 #page-content-wrapper {
@@ -108,12 +125,41 @@ body {
 }
 
 #page-footer{
-  height: 5%;
   background-color: #CD1F32;
+  color: white;
+}
+
+/* Cards */
+#card-total-courses {
+  background-color: #7460EE;
+  color: white;
+}
+
+#card-courses-by-semester {
+  background-color: #1E88E5;
+  color: white;
+}
+
+#card-total-users {
+  background-color: #26C6DA;
+  color: white;
+}
+
+#card-users-by-semester {
+  background-color: #2F3D4A;
+  color: white;
+}
+
+.card-title {
+  text-align: center;
 }
 
 
-
+/* Counter */
+.counter{
+  text-align: center;
+  font-size: 30px;
+}
 
 @media(min-width:768px) {
   #wrapper {

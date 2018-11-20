@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap4',
     'analytics_moodle_uv',
 ]
 
@@ -83,8 +82,19 @@ DATABASES = {
         'PASSWORD': 'dwh_user',
         'HOST': 'db',
         'PORT': '5432', 
+    },
+    'moodle_dwh':{
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'moodle_dwh',
+        'USER': 'moodle35',
+        'PASSWORD': 'moodle35',
+        'HOST': '192.168.117.40',
+        'PORT': '5432',
     }
 }
+
+# Routers for multiple databases
+DATABASE_ROUTERS = ['analytics_moodle_uv.routers.analytics_moodle_uv_router',]
 
 
 # Password validation
