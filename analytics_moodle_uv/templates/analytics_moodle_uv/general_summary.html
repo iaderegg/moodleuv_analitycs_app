@@ -2,96 +2,115 @@
 {% load static %}
 
 {% block content %}
-    <div class="col-12">
-        <h3>Resumen general</h3>
-        <hr>
+    <div class="row">
+        <div class="col-12">
+            <h3>Resumen general</h3>
+            <hr>
+        </div>        
     </div>
+
     <!-- Courses column -->
-    <div class="col-6">
-        <div class="col-12">
-            <h4>Cursos</h4>
+    <div class="row">
+        <div class="col-6">
+            <div class="col-12">
+                <h4>Cursos</h4>
+            </div>
+            <div class="col-12">
+
+                <div class="card-deck">
+                    <div class="card" id="card-total-courses">
+                        <div class="card-body">
+                            <p class="card-text counter" id="counter-total-courses">0</p>
+                            <h5 class="card-title">Total cursos</h5>
+                        </div>
+                    </div>
+
+                    <div class="card" id="card-courses-by-semester">
+                        <div class="card-body">
+                            <p class="card-text counter" id="counter-courses-current-semester">0</p>
+                            <h5 class="card-title">Cursos periodo actual</h5>
+                        </div>
+                    </div>
+
+                    <div class="card" id="card-active-courses">
+                        <div class="card-body">
+                            <p class="card-text counter">9999</p>
+                            <h5 class="card-title">Cursos activos en el periodo actual</h5>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+    
+            <div class="col-12">
+                <canvas id="courses-headquarters-bar-chart" width="800" height="450"></canvas>
+            </div>
+    
+            <div class="col-12">
+                <canvas id="courses-faculty-bar-chart" width="800" height="450"></canvas>
+            </div>
+            
+            <div class="col-12">
+                <hr>
+            </div>
+
+            <div class="col-12">
+                <h5>Top recursos</h5>
+            </div>
         </div>
-        <div class="col-12">
-            <div class="card-deck">
-                <div class="card" id="card-total-courses">
-                    <div class="card-body">
-                        <p class="card-text counter">9999</p>
-                        <h6 class="card-title">Total cursos</h6>
+        <!-- End courses column -->
+    
+        <!-- Users column -->
+        <div class="col-6">
+            <div class="col-12">
+                <h4>Usuarios</h4>
+            </div>
+    
+            <div class="col-12">
+                <div class="card-deck">
+                    <div class="card" id="card-total-users">
+                        <div class="card-body">
+                            <p class="card-text counter" id="counter-total-users">0</p>
+                            <h5 class="card-title">Total usuarios</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="card" id="card-courses-by-semester">
-                    <div class="card-body">
-                        <p class="card-text counter">9999</p>
-                        <h6 class="card-title">Cursos periodo actual</h6>
+    
+                    <div class="card" id="card-users-by-semester">
+                        <div class="card-body">
+                            <p class="card-text counter">9999</p>
+                            <h5 class="card-title">Usuarios periodo actual</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="card" id="card-active-courses">
-                    <div class="card-body">
-                        <p class="card-text counter">9999</p>
-                        <h5 class="card-title">Cursos activos en el periodo actual</h5>
+    
+                     <div class="card" id="card-active-users">
+                        <div class="card-body">
+                            <p class="card-text counter">9999</p>
+                            <h5 class="card-title">Usuarios periodo actual</h5>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-12">
-            <canvas id="courses-headquarters-bar-chart" width="800" height="450"></canvas>
-        </div>
-
-        <div class="col-12">
-            <canvas id="courses-faculty-bar-chart" width="800" height="450"></canvas>
-        </div>
-
-        <div class="col-12">
-            <h5>Top recursos</h5>
-        </div>
-    </div>
-    <!-- End courses column -->
-
-    <!-- Users column -->
-    <div class="col-6">
-        <div class="col-12">
-            <h4>Usuarios</h4>
-        </div>
-
-        <div class="col-12">
-            <div class="card-deck">
-                <div class="card" id="card-total-users">
-                    <div class="card-body">
-                        <p class="card-text counter">9999</p>
-                        <h5 class="card-title">Total usuarios</h5>
-                    </div>
-                </div>
-
-                <div class="card" id="card-users-by-semester">
-                    <div class="card-body">
-                        <p class="card-text counter">9999</p>
-                        <h5 class="card-title">Usuarios periodo actual</h5>
-                    </div>
-                </div>
-
-                 <div class="card" id="card-active-users">
-                    <div class="card-body">
-                        <p class="card-text counter">9999</p>
-                        <h5 class="card-title">Usuarios periodo actual</h5>
-                    </div>
-                </div>
+    
+            <div class="col-12">
+                <canvas id="users-headquarters-bar-chart" width="800" height="450"></canvas>
             </div>
-        </div>
+    
+            <div class="col-12">
+                <canvas id="users-faculty-bar-chart" width="800" height="450"></canvas>
+            </div>
 
-        <div class="col-12">
-            <canvas id="users-headquarters-bar-chart" width="800" height="450"></canvas>
+            <div class="col-12">
+                <hr>
+            </div>
+    
+            <div class="col-12">
+                <h5>Top actividades</h5>
+            </div>
+    
         </div>
-
-        <div class="col-12">
-            <canvas id="users-faculty-bar-chart" width="800" height="450"></canvas>
-        </div>
-
-        <div class="col-12">
-            <h5>Top actividades</h5>
-        </div>
-
     </div>
+    
     <!-- End users column -->
 
 {% endblock %}
@@ -99,6 +118,5 @@
 {% block scripts %}
     <script src="{% static 'analytics_moodle_uv/js/Chart.min.js' %}"></script>
     <script src="{% static 'analytics_moodle_uv/js/TweenMax.min.js' %}"></script>
-    <script src="{% static 'analytics_moodle_uv/js/counter.js' %}"></script>
-
+    <script src="{% static 'analytics_moodle_uv/js/amuv_general_summary.js' %}"></script>
 {% endblock %}

@@ -1,17 +1,76 @@
-function count(){
+$(document).ready(function(){
+
+    $.ajax({
+        url: '/get_general_summary/',
+        dataType: 'json',
+        type: 'POST',
+        success: function(data) {
+            console.log('test')
+            if (data.is_valid) {
+                // Cursos
+                count(data.total_courses_uv, $('#counter-total-courses'));
+                count(data.total_courses_current_semester_uv, $('#counter-courses-current-semester'))
+
+                // Usuarios
+                count(data.total_users_uv, $('#counter-total-users'))
+            } else {
+                console.log("Ajax error");
+            }
+        },
+        error: function(e){
+            console.log(e);
+        }
+    });
+})
+
+// Función que da animación a cifras numéricas
+function count(number, element){
   var counter = { var: 0 };
   TweenMax.to(counter, 2, {
-    var: 100,
+    var: number,
     onUpdate: function () {
       var number = Math.ceil(counter.var);
-      $('.counter').html(number);
+      $(element).html(number);
 
     },
     ease:Circ.easeOut
   });
 }
 
-count();
+//Django basic setup for accepting ajax requests.
+// Cookie obtainer Django
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+
+// Setup ajax connections safetly
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
 
 
 // Bar chart courses by headquarters

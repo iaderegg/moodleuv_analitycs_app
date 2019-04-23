@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <div class="page_header" id="page_header">
+    <div class="page_header fixed-top" id="page_header">
         <div class="row">
             <div class="col-sm-1" id="div-menu-toogle">
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
@@ -41,7 +41,7 @@
                     <a href="#"><i class="fa fa-folder-open"></i> Cursos</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-users"></i> Usuarios</a>
+                    <a href="/users"><i class="fa fa-users"></i> Usuarios</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-pencil"></i> Actividades</a>
@@ -55,23 +55,23 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
+                <!-- <div class="row"> -->
                     {% block content%}
                     {% endblock%}
-                </div>
+                <!-- </div> -->
             </div>
         </div>
         <!-- /#page-content-wrapper -->
     </div>
 
-    <footer class="navbar fixed-bottom" id="page-footer">
+    <div class="row" id="page_footer">
         <div class="col-md-12">
             <h4>Vicerrectoría Académica</h4>
         </div>
         <div class="col-md-12">
             <h5>Dirección de Nuevas Tecnologías y Educación Virtual - DINTEV</h5>
         </div>
-    </footer>
+    </div>
 
    <!-- Menu Toggle Script -->
     <script>

@@ -112,3 +112,6 @@ class FCourseCreation(models.Model):
     class Meta:
         managed = False
         db_table = 'f_course_creation'
+
+def __str__(self):
+    return self.field_name

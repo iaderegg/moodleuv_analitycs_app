@@ -17,12 +17,20 @@ body {
   height: 100%;
 }
 
+#page_footer {
+  background-color: #CD1F32;
+  color: white;
+  z-index: 2;
+}
+
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  margin-top: 3.1%;
+
 }
 
 #wrapper.toggled {
@@ -30,7 +38,7 @@ body {
 }
 
 #sidebar-wrapper {
-  z-index: 1000;
+
   position: fixed;
   left: 200px;
   width: 0;
@@ -46,6 +54,7 @@ body {
 
 #wrapper.toggled #sidebar-wrapper {
   width: 200px;
+  z-index: -1;
 }
 
 #div-menu-toogle {
@@ -69,11 +78,9 @@ body {
 #page-content-wrapper {
   width: 100%;
   position: absolute;
-  padding: 15px;
 }
 
 #wrapper.toggled #page-content-wrapper {
-  position: absolute;
   margin-right: -200px;
 }
 
@@ -122,11 +129,7 @@ body {
 .sidebar-nav>.sidebar-brand a:hover {
   color: #2c4558;
   background: none;
-}
-
-#page-footer{
-  background-color: #CD1F32;
-  color: white;
+  z-index: -1;
 }
 
 /* Cards */

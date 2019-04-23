@@ -1,0 +1,33 @@
+{% extends  "analytics_moodle_uv/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="col">
+  <h3>Usuarios</h3>
+  <hr>
+</div>
+
+<div class="row">
+  <div class="card-deck col-sm col-lg">
+      <div class="card" id="card-total-created-users">
+          <div class="card-body">
+              <p class="card-text counter" id="total-created-users">0</p>
+              <h5 class="card-title">Usuarios creados</h5>
+          </div>
+      </div>
+      <div class="card" id="card-total-deleted-users">
+          <div class="card-body">
+              <p class="card-text counter" id="total-deleted-users">0</p>
+              <h5 class="card-title">Usuarios eliminados</h5>
+          </div>
+      </div>
+  </div>
+  <div id="control-summary-users" class="card-deck col-sm col-lg">
+    <select name="" id="">
+      <option value="test">Test</option>
+    </select>
+  </div>
+</div>
+
+{% endblock %}
