@@ -102,6 +102,19 @@ class DUser(models.Model):
         managed = False
         db_table = 'd_user'
 
+class DAcademicPeriods(models.Model):
+    technical_surrogate_key_field = models.BigAutoField(db_column='technical/surrogate key field', unique=True, primary_key=True)  # Field renamed to remove unsuitable characters.
+    name = models.CharField(max_length=100, blank=True, null=True)
+    code = models.CharField(max_length=20, blank=True, null=True)
+    timestart = models.BigIntegerField(blank=True, null=True)
+    timecompletion = models.BigIntegerField(blank=True, null=True)
+    active = models.IntegerField(blank=True, null=True)
+
+
+    class Meta:
+        managed = False
+        db_table = 'd_academic_periods'
+
 class FCourseCreation(models.Model):
     contextlevel = models.BigIntegerField(blank=True, null=True)
     contextid = models.BigIntegerField(blank=True, null=True)

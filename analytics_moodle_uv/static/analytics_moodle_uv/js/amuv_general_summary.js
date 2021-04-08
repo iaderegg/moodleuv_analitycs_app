@@ -5,7 +5,7 @@ $(document).ready(function(){
         dataType: 'json',
         type: 'POST',
         success: function(data) {
-            console.log('test')
+
             if (data.is_valid) {
                 // Cursos
                 count(data.total_courses_uv, $('#counter-total-courses'));

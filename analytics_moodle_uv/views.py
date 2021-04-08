@@ -69,3 +69,8 @@ def get_init_current_semester():
     return init_current_semester_timestamp
 
 
+# Función que retorna periodos académicos activos
+def get_active_academic_periods():
+    
+    return 1
+

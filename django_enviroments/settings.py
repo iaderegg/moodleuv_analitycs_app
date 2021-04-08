@@ -26,7 +26,8 @@ SECRET_KEY = 'py#g=*0)jw@4ky7mjxid(mdhxkl1!e(_#w$81#5u7v9d_shb=0'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '10.162.31.134',
+    '127.0.0.1',
+    'localhost'
 ]
 
 
@@ -87,16 +88,16 @@ DATABASES = {
         'NAME': 'dwh_app',
         'USER': 'dwh_user',
         'PASSWORD': 'dwh_user',
-        'HOST': 'db',
-        'PORT': '5432', 
+        'HOST': '127.0.0.1',
+        'PORT': '5433', 
     },
     'moodle_dwh':{
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'moodle_dwh',
-        'USER': 'moodle35',
-        'PASSWORD': 'moodle35',
-        'HOST': '192.168.117.40',
-        'PORT': '5432',
+        'USER': 'moodle',
+        'PASSWORD': 'moodle',
+        'HOST': '127.0.0.1',
+        'PORT': '5433',
     }
 }
 
