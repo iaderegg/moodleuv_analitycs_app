@@ -9,12 +9,15 @@ from django.db import models
 
 class DCourse(models.Model):
     technical_surrogate_key_field = models.BigAutoField(db_column='technical/surrogate key field', unique=True, primary_key=True)  # Field renamed to remove unsuitable characters.
-    id_moodle = models.IntegerField(blank=True, null=True)
+    courseid_moodle = models.IntegerField(blank=True, null=True)
     fullname = models.CharField(max_length=254, blank=True, null=True)
     category = models.IntegerField(blank=True, null=True)
     format = models.CharField(max_length=21, blank=True, null=True)
     shortname = models.CharField(max_length=255, blank=True, null=True)
     timecreated = models.IntegerField(blank=True, null=True)
+    startdate = models.IntegerField(blank=True, null=True)
+    enddate = models.IntegerField(blank=True, null=True)
+    headquarterid = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
