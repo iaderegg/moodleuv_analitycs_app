@@ -101,6 +101,7 @@ class DUser(models.Model):
     city = models.CharField(max_length=120, blank=True, null=True)
     department = models.CharField(max_length=255, blank=True, null=True)
     timecreated = models.BigIntegerField(blank=True, null=True)
+    isstudent = models.BooleanField()
 
     class Meta:
         managed = False

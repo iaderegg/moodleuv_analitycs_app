@@ -64,7 +64,58 @@ $(document).ready(function(){
               });
 
               // Usuarios
-              count(data.total_users_uv, $('#counter-total-users'))
+              count(data.total_users, $('#counter-total-users'))
+              count(data.total_students, $('#counter-total-students'))
+              count(data.total_other_users, $('#counter-total-other-users'))
+
+              var usersByHeadquarter = JSON.parse( data.users_by_headquarter )
+              var usersByFaculty = JSON.parse( data.users_by_faculties )
+
+              // Bar chart users by headquarters
+              new Chart(document.getElementById("users-headquarters-bar-chart"), {
+                type: 'bar',
+                data: {
+                  labels: usersByHeadquarter['headquarters'],
+                  datasets: [
+                    {
+                      label: "Usuarios",
+                      backgroundColor: "#3cba9f",
+                      data: usersByHeadquarter['total']
+                    }
+                  ]
+                },
+                options: {
+                  legend: { display: false },
+                  title: {
+                    display: true,
+                    text: 'Total de usuarios por facultad o instituto en el periodo actual'
+                  }
+                }
+              });
+
+              // Bar chart users by headquarters
+            new Chart(document.getElementById("users-faculty-bar-chart"), {
+              type: 'bar',
+              data: {
+                labels: usersByFaculty['faculties'],
+                datasets: [
+                  {
+                    label: "Usuarios",
+                    backgroundColor: "#e8c3b9",
+                    data: usersByFaculty['total']
+                  }
+                ]
+              },
+              options: {
+                legend: { display: false },
+                title: {
+                  display: true,
+                  text: 'Total de usuarios por facultad o instituto en el año seleccionado'
+                }
+              }
+            });
+
+
             } else {
               console.log("Ajax error")
             }
@@ -129,46 +180,5 @@ $.ajaxSetup({
 
 
 
-// Bar chart users by headquarters
-new Chart(document.getElementById(""), {
-    type: 'bar',
-    data: {
-      labels: ["Melendéz", "San Fernando", "Palmira", "Tulúa", "Norte del Cauca"],
-      datasets: [
-        {
-          label: "Cursos",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Total de usuarios por facultad o instituto en el periodo actual'
-      }
-    }
-});
 
-// Bar chart users by headquarters
-new Chart(document.getElementById("users-faculty-bar-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["Melendéz", "San Fernando", "Palmira", "Tulúa", "Norte del Cauca"],
-      datasets: [
-        {
-          label: "Cursos",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Total de usuarios por facultad o instituto en el periodo actual'
-      }
-    }
-});
+

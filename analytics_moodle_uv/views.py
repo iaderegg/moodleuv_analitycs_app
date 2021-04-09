@@ -51,14 +51,14 @@ def get_general_summary( request ):
   courses_by_headquarter_queryset = DCourse.objects.filter(enddate__gte=init_year).values('headquartername').annotate(total=Count('headquartername')).order_by('-total')
   courses_by_faculty_queryset = DCourse.objects.filter(enddate__gte=init_year).values('facultyname').annotate(total=Count('facultyname')).order_by('-total')
 
-  headquarters = []
+  headquarters_courses = []
   total_courses_headquarters = []
 
   for element in courses_by_headquarter_queryset:
-    headquarters.append( element['headquartername'] )   
+    headquarters_courses.append( element['headquartername'] )   
     total_courses_headquarters.append( element['total'] )
 
-  courses_by_headquarter_dict = {'headquarters': headquarters, 'total': total_courses_headquarters}
+  courses_by_headquarter_dict = {'headquarters': headquarters_courses, 'total': total_courses_headquarters}
   courses_by_headquarter_json = json.dumps( courses_by_headquarter_dict )
 
   faculties = []
@@ -72,8 +72,33 @@ def get_general_summary( request ):
   courses_by_faculties_json = json.dumps( courses_by_faculties_dict ) 
     
   # Indicadores Usuarios Campus Virtual
-  total_users_uv = DUser.objects.count()
-  #total_users_current_semester_uv = DUser.objects.filter(timecreated_gte=init_current_semester).count()
+  total_users = DUser.objects.count()
+  total_students = DUser.objects.filter(isstudent = True).count()
+  total_other_users = DUser.objects.filter(isstudent = False).count()
+
+  users_by_headquarter_queryset = DCourse.objects.all().values('headquartername').annotate(total=Count('headquartername')).order_by('-total')
+  
+  headquarters_users = []
+  total_users_headquarters = []
+
+  for element in users_by_headquarter_queryset:
+    headquarters_users.append( element['headquartername'] )   
+    total_users_headquarters.append( element['total'] )
+
+  users_by_headquarter_dict = {'headquarters': headquarters_users, 'total': total_users_headquarters}
+  users_by_headquarter_json = json.dumps( users_by_headquarter_dict )
+
+  users_by_faculties_queryset = DCourse.objects.all().values('facultyname').annotate(total=Count('facultyname')).order_by('-total')
+
+  faculties_users = [] 
+  total_users_faculties = []
+
+  for element in users_by_faculties_queryset:
+    faculties_users.append( element['facultyname'] )   
+    total_users_faculties.append( element['total'] )
+
+  users_by_faculties_dict = {'faculties': faculties_users, 'total': total_users_faculties}
+  users_by_faculties_json = json.dumps( users_by_faculties_dict )
 
   data = {
     'is_valid': False,
@@ -83,7 +108,11 @@ def get_general_summary( request ):
     'total_no_regular_courses': total_no_regular_courses,
     'courses_by_headquarter': courses_by_headquarter_json,
     'courses_by_faculties': courses_by_faculties_json,
-    'total_users_uv': total_users_uv,
+    'total_users': total_users,
+    'total_students': total_students,
+    'total_other_users': total_other_users,
+    'users_by_headquarter': users_by_headquarter_json,
+    'users_by_faculties': users_by_faculties_json
   }
 
   if request.is_ajax():
