@@ -48,23 +48,29 @@ def get_general_summary( request ):
   total_regular_courses = DCourse.objects.filter(category__gte=30000).count()
   total_no_regular_courses = DCourse.objects.filter(category__lte=30000).count()
 
-  courses_by_headquarter_queryset = DCourse.objects.filter(enddate__gte=init_year).values('headquarterid').annotate(total=Count('headquarterid')).order_by('-total')
+  courses_by_headquarter_queryset = DCourse.objects.filter(enddate__gte=init_year).values('headquartername').annotate(total=Count('headquartername')).order_by('-total')
+  courses_by_faculty_queryset = DCourse.objects.filter(enddate__gte=init_year).values('facultyname').annotate(total=Count('facultyname')).order_by('-total')
 
   headquarters = []
   total_courses_headquarters = []
 
-  
-
   for element in courses_by_headquarter_queryset:
-    headquarters.append( element['headquarterid'] )   
+    headquarters.append( element['headquartername'] )   
     total_courses_headquarters.append( element['total'] )
 
   courses_by_headquarter_dict = {'headquarters': headquarters, 'total': total_courses_headquarters}
-
   courses_by_headquarter_json = json.dumps( courses_by_headquarter_dict )
-  
-  #courses_by_headquarter_json = serializers.serialize('json', courses_by_headquarter, fields=('headquarterid','total'))
 
+  faculties = []
+  total_courses_faculties =[]
+
+  for element in courses_by_faculty_queryset:
+    faculties.append( element['facultyname'] )   
+    total_courses_faculties.append( element['total'] )
+
+  courses_by_faculties_dict = {'faculties': faculties, 'total': total_courses_faculties}
+  courses_by_faculties_json = json.dumps( courses_by_faculties_dict ) 
+    
   # Indicadores Usuarios Campus Virtual
   total_users_uv = DUser.objects.count()
   #total_users_current_semester_uv = DUser.objects.filter(timecreated_gte=init_current_semester).count()
@@ -76,6 +82,7 @@ def get_general_summary( request ):
     'total_regular_courses': total_regular_courses,
     'total_no_regular_courses': total_no_regular_courses,
     'courses_by_headquarter': courses_by_headquarter_json,
+    'courses_by_faculties': courses_by_faculties_json,
     'total_users_uv': total_users_uv,
   }
 

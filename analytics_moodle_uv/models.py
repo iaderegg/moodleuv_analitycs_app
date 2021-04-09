@@ -17,7 +17,8 @@ class DCourse(models.Model):
     timecreated = models.IntegerField(blank=True, null=True)
     startdate = models.IntegerField(blank=True, null=True)
     enddate = models.IntegerField(blank=True, null=True)
-    headquarterid = models.IntegerField(blank=True, null=True)
+    headquartername = models.CharField(max_length=100, blank=True, null=True)
+    facultyname = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         managed = False
