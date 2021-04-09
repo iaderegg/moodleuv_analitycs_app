@@ -107,6 +107,26 @@ class DUser(models.Model):
         managed = False
         db_table = 'd_user'
 
+class DResource(models.Model):
+    technical_surrogate_key_field = models.BigAutoField(db_column='technical/surrogate key field', unique=True, primary_key=True)  # Field renamed to remove unsuitable characters.
+    id_moodle = models.IntegerField(blank=True, null=True)
+    resourcename = models.CharField(max_length=500, blank=True, null=True)
+    nombrerecurso = models.CharField(max_length=500, blank=True, null=True)    
+
+    class Meta:
+        managed = False
+        db_table = 'd_resource'
+
+class DResource(models.Model):
+    technical_surrogate_key_field = models.BigAutoField(db_column='technical/surrogate key field', unique=True, primary_key=True)  # Field renamed to remove unsuitable characters.
+    id_moodle = models.IntegerField(blank=True, null=True)
+    activityname = models.CharField(max_length=500, blank=True, null=True)
+    nombreactividad = models.CharField(max_length=500, blank=True, null=True)    
+
+    class Meta:
+        managed = False
+        db_table = 'd_activity'
+
 class DAcademicPeriods(models.Model):
     technical_surrogate_key_field = models.BigAutoField(db_column='technical/surrogate key field', unique=True, primary_key=True)  # Field renamed to remove unsuitable characters.
     name = models.CharField(max_length=100, blank=True, null=True)
@@ -119,6 +139,15 @@ class DAcademicPeriods(models.Model):
     class Meta:
         managed = False
         db_table = 'd_academic_periods'
+
+class FCreateActivity(models.Model):
+    technical_surrogate_key_field = models.BigAutoField(db_column='technical/surrogate key field', unique=True, primary_key=True)  # Field renamed to remove unsuitable characters.
+    dateid = models.IntegerField(blank=True, null=True)
+    activityid = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'f_activity_creation'
 
 class FCourseCreation(models.Model):
     contextlevel = models.BigIntegerField(blank=True, null=True)
